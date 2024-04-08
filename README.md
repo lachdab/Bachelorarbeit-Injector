@@ -1,5 +1,5 @@
 # Dll Injector für meine Bachelorarbeit
-## Der Injector verwendet die bekannteste injection Method (CreateRemoteThread und LoadLibaryA aus der kernel32.dll)
+## Der Injector verwendet die bekannteste injection Methode (CreateRemoteThread und LoadLibaryA aus der kernel32.dll)
 
 # Wie funktioniert der Injector?
 1. Er holt sich den handle von unserem Spiel
