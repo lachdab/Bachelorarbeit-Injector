@@ -9,4 +9,5 @@
 5. Mit CreateRemoteThread() erstellen wir einen thread der LoadLibraryA() aufruft mit pointer zu unserer zugewiesen Addresse wo unsere Cheat dll ist
 
 
-### Note: dies funktioniert gut aber nur weil im Moment kein Anti-Cheat im Spiel ist
+> [!NOTE]
+> dies funktioniert gut aber nur weil im Moment kein Anti-Cheat im Spiel ist
