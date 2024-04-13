@@ -30,8 +30,9 @@ namespace Injector
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String injectionStatus = Injecting.InjectingDLLToGame(processGameData[1], "F:\\Bachelorarbeit\\Injector\\Injector\\bin\\x64\\Release\\gurke.dll");
+            String injectionStatus = Injecting.InjectingDLLToGame(processGameData[1], "F:\\Bachelorarbeit\\Injector\\Injector\\bin\\x64\\Release\\Cheat.dll");
             label1.Text = injectionStatus;
+            Application.Exit();
         }
 
         // Function that's checks if the game is started and returns the status if found + process ID

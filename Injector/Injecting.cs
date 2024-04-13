@@ -99,7 +99,7 @@ namespace Injector
                 {
                     return "Failed to allocate remote memory.";
                 }
-
+                
                 int bytesWritten;
                 if (!WriteProcessMemory(hProcess, remoteMemory, dllPath, (uint)(dllPath.Length + 1), out bytesWritten))
                 {
@@ -108,7 +108,6 @@ namespace Injector
 
                 IntPtr hThread = CreateRemoteThread(hProcess, IntPtr.Zero, 0, remoteThreadStart, remoteMemory, 0, IntPtr.Zero);
 
-                // Frage: wenn hThread zero ist, dann return er und 2 sekunden später ist die injecting erfolgreich (gelöst)
                 if (hThread == IntPtr.Zero)
                 {
                     return "Failed to create remote thread.";
