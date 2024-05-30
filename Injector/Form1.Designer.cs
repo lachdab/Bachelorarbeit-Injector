@@ -61,7 +61,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 33);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Test Inject";
+            this.button1.Text = "Inject";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -84,8 +84,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.status);
             this.Controls.Add(this.processId);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Loader";
-            this.Text = "Injector Prototype";
+            this.Text = "Injector";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

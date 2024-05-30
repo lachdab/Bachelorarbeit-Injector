@@ -18,6 +18,7 @@ namespace Injector
         public Loader()
         {
             InitializeComponent();
+            
             processGameData = Find_Game();
             status.Text = "Status: " + processGameData[0];
             processId.Text = "Process ID: " + processGameData[1];
