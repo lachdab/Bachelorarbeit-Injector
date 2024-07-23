@@ -1,27 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace Injector
 {
     public partial class Loader : Form
     {
-        public String[] processGameData;
+        public string[] processGameData;
         public Loader()
         {
             InitializeComponent();
             
-            processGameData = Find_Game();
-            status.Text = "Status: " + processGameData[0];
-            processId.Text = "Process ID: " + processGameData[1];
+            status.Text = "Status: not found";
+            processId.Text = "Process ID: not found";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -29,19 +21,39 @@ namespace Injector
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            String injectionStatus = Injecting.InjectingDLLToGame(processGameData[1], "F:\\Bachelorarbeit\\Injector\\Injector\\bin\\x64\\Release\\Cheat.dll");
-            label1.Text = injectionStatus;
-            Application.Exit();
+            try
+            {
+                Process gameProcess = Process.Start("F:\\Bachelorarbeit\\BuildGame\\Bachelorarbeit.exe");
+                status.Text = "Status: game is starting";
+                await Task.Delay(5000);
+
+                processGameData = Find_Game();
+                if (processGameData[0] == "found")
+                {
+                    status.Text = "Status: " + processGameData[0];
+                    processId.Text = "Process ID: " + processGameData[1];
+
+                    string injectionStatus = Injecting.InjectingDLLToGame(processGameData[1], "F:\\Bachelorarbeit\\Injector\\Injector\\bin\\x64\\Release\\Cheat.dll");
+                    label1.Text = injectionStatus;
+                    Application.Exit();
+                }
+                else
+                {
+                    label1.Text = "Failed to find the game process";
+                }
+            }
+            catch(Exception ex) {
+                label1.Text = "Error: " + ex.Message;
+            }
         }
 
         // Function that's checks if the game is started and returns the status if found + process ID
-        private String[] Find_Game()
+        private string[] Find_Game()
         {
-            Process[] _process = null;
-            _process = Process.GetProcessesByName("Bachelorarbeit");
-            String[] process_status_data = new String[2];
+            Process[] _process = Process.GetProcessesByName("Bachelorarbeit");
+            string[] process_status_data = new string[2];
             foreach (Process proc in _process)
             {
                 if (proc != null)
