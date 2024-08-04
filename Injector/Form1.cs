@@ -25,9 +25,9 @@ namespace Injector
         {
             try
             {
-                Process gameProcess = Process.Start("F:\\Bachelorarbeit\\BuildGame\\Bachelorarbeit.exe");
+                Process gameProcess = Process.Start("F:\\Bachelorarbeit\\BuildGame2.0\\Bachelorarbeit2.0.exe");
                 status.Text = "Status: game is starting";
-                await Task.Delay(5000);
+                await Task.Delay(10000); // 10sek
 
                 processGameData = Find_Game();
                 if (processGameData[0] == "found")
@@ -52,7 +52,7 @@ namespace Injector
         // Function that's checks if the game is started and returns the status if found + process ID
         private string[] Find_Game()
         {
-            Process[] _process = Process.GetProcessesByName("Bachelorarbeit");
+            Process[] _process = Process.GetProcessesByName("Bachelorarbeit2.0");
             string[] process_status_data = new string[2];
             foreach (Process proc in _process)
             {
